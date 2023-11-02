@@ -13,7 +13,6 @@ function isLogged() {
 
 function toggle() {
     isActive.value = !isActive.value;
-    console.log(isActive.value)
 }
 
 </script>
@@ -34,28 +33,28 @@ function toggle() {
         aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
             <div class="mb-2 flex w-full" v-if="isLogged()">
-                <div class="flex">
-                    <div
-                        class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 border border-gray-300">
-                        <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                </div>
                 <div class="flex flex-col ml-4 w-full">
-                    <span class="ml-3 w-full mb-2">
-                        <p>{{ $t("app.sidebar.wlecome-span", { name: userData.firstName }) }}</p>
-                    </span>
+                    <div class="flex flex-row mb-2">
+                        <div
+                            class="relative w-14 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 border border-gray-300">
+                            <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span class="flex flex-wrap	 content-center ml-3 w-full">
+                            <p>{{ $t("app.sidebar.name-account", { name: userData.firstName }) }}</p>
+                        </span>
+                    </div>
                     <button type="button" @click="toggle()"
-                        class="text-white bg-emerald-400 hover:bg-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-300 font-medium rounded-full text-sm px-5 py-1.5 text-center mr-2 mb-2 dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">{{
+                        class="border border-blue-500 text-blue-500 bg-gray-50 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-1.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ">{{
                             $t('app.sidebar.logout-button') }}</button>
                 </div>
             </div>
             <div class="flex justify-center" v-else>
                 <button type="button" @click="toggle()"
-                    class="text-white bg-emerald-400 hover:bg-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-300 font-medium rounded-full text-sm px-5 py-1.5 text-center mr-2 mb-2 dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">{{
+                    class="border border-blue-500 text-blue-500 bg-gray-50 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-1.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{
                         $t('app.sidebar.login-button') }}</button>
             </div>
             <ul class="space-y-2 font-medium">
@@ -69,7 +68,32 @@ function toggle() {
                             <path
                                 d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                         </svg>
-                        <span class="ml-3">Dashboard</span>
+                        <span class="ml-3">{{$t('app.sidebar.items.today-task')}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                            <path
+                                d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+                            <path
+                                d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+                        </svg>
+                        <span class="ml-3">{{$t('app.sidebar.items.seven-day-task')}}</span>
+                    </a>
+                </li>                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                            <path
+                                d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+                            <path
+                                d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+                        </svg>
+                        <span class="ml-3">{{$t('app.sidebar.items.all-task')}}</span>
                     </a>
                 </li>
             </ul>
