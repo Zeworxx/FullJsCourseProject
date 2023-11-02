@@ -1,4 +1,8 @@
 # FullJsCourseProject
+
 Tremendous Js Project
 
-# Hi ! 
+# Welcome ! 
+
+Here is my final project for the full Js course. The project is about a ToDoList Handler.
+
