@@ -14,6 +14,20 @@
             "welcome-title" : "Bonjour {name} !",
             "second-title" : "Votre espace de gestion de tâches",
             "add-task-button" : "Ajouter une tâche"
+        },
+        "add-task-sidebar" : {
+            "title" : "Ajouter une tâche",
+            "task-name-label" : "Nom de la tâche :",
+            "task-name-placeholder" : "Indiquez le nom de la tâche",
+            "task-description-label" : "Description :",
+            "task-description-placeholder" : "Description de la tâche...",
+            "task-topic-label" : "Sujet : ",
+            "task-topic-placeholder" : "Seléctionner un sujet",
+            "task-priority-level" : "Priorité :",
+            "task-priority-level-placeholder" : "Priorité de 1 à 5",
+            "task-start-date-label" : "Date de début : ",
+            "task-end-date-label" : "Date de fin : "
+
         }
     }
 }
