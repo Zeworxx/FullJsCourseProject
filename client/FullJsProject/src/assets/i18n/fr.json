@@ -5,14 +5,15 @@
             "logout-button" : "Déconnexion",
             "login-button" : "Connexion",
             "items" : {
+                "task-handler" : "Gestion des tâches",
                 "today-task" : "Aujourd'hui",
-                "seven-day-task" : "7 prochains jours",
-                "all-task" : "Toutes les tâches"
+                "seven-day-task" : "7 prochains jours"
             }
         },
         "todolist" : {
             "welcome-title" : "Bonjour {name} !",
-            "second-title" : "Votre espace de gestion de tâches"
+            "second-title" : "Votre espace de gestion de tâches",
+            "add-task-button" : "Ajouter une tâche"
         }
     }
 }
