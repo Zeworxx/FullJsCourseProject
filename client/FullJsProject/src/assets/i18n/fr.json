@@ -1,9 +1,18 @@
 {
     "app" : {
         "sidebar" : {
-            "wlecome-span" : "Bonjour {name} !",
+            "name-account" : "{name}",
             "logout-button" : "Déconnexion",
-            "login-button" : "Connexion"
+            "login-button" : "Connexion",
+            "items" : {
+                "today-task" : "Aujourd'hui",
+                "seven-day-task" : "7 prochains jours",
+                "all-task" : "Toutes les tâches"
+            }
+        },
+        "todolist" : {
+            "welcome-title" : "Bonjour {name} !",
+            "second-title" : "Votre espace de gestion de tâches"
         }
     }
 }
