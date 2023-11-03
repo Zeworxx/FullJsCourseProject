@@ -17,10 +17,12 @@ let topicsList: Ref<TopicsData[]> = ref([
     topicName: 'Personnal'
   }
 ])
+
+const emits = defineEmits(["hideTaskSidebar"])
 </script>
 
 <template>
-  <div class="absolute top-5 right-5 hover:cursor-pointer" @click="$emit('hideTaskSidebar', false)">
+  <div class="absolute top-5 right-5 hover:cursor-pointer" @click="emits('hideTaskSidebar', false)">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -87,7 +89,7 @@ let topicsList: Ref<TopicsData[]> = ref([
             required
             class="hover:border-blue-500 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg flex-1 focus:ring-blue-500 focus:border-blue-500 block w-11/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            <option v-for="topic in topicsList">{{ topic.topicName }}</option>
+            <option v-for="topic in topicsList" :key="topic.id">{{ topic.topicName }}</option>
           </select>
         </div>
         <div class="w-1/2">
