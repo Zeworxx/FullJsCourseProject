@@ -18,7 +18,7 @@ let topicsList: Ref<TopicsData[]> = ref([
   }
 ])
 
-const emits = defineEmits(["hideTaskSidebar"])
+const emits = defineEmits(['hideTaskSidebar'])
 </script>
 
 <template>
