@@ -1,5 +1,6 @@
 export interface UserData {
     firstName : string
+    topicTask : string
 }
 
 export interface TopicsData{

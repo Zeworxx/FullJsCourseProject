@@ -8,6 +8,10 @@
                 "task-handler" : "Gestion des tâches",
                 "today-task" : "Aujourd'hui",
                 "seven-day-task" : "7 prochains jours"
+            },
+            "task-topic-list" : {
+                "main-title" : "Liste sujets",
+                "add-topic-list" : "Ajouter un sujet"
             }
         },
         "todolist" : {
