@@ -4,7 +4,7 @@ import ToDoList from './todolist/ToDoList.vue'
 import AddTask from './add-task/AddTask.vue'
 import { ref, type Ref } from 'vue';
 
-let isTaskSidebarActive: Ref<boolean> = ref(true)
+let isTaskSidebarActive: Ref<boolean> = ref(false)
 
 function showTaskSidebar(value: boolean): void {
     isTaskSidebarActive.value = value

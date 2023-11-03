@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
 import { type UserData } from 'src/models/app.model'

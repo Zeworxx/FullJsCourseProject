@@ -26,8 +26,9 @@
             "task-priority-level" : "Priorité :",
             "task-priority-level-placeholder" : "Priorité de 1 à 5",
             "task-start-date-label" : "Date de début : ",
-            "task-end-date-label" : "Date de fin : "
-
+            "task-end-date-label" : "Date de fin : ",
+            "validate-task-button" : "Enregistrer la tâche",
+            "cancel-task-button" : "Annuler"
         }
     }
 }
