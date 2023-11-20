@@ -5,7 +5,7 @@ import { type UserData, type TopicsData } from 'src/models/app.model'
 import { UserServices } from '../services/UserServices.vue';
 const UserService = new UserServices()
 
-const userData: Ref<UserData | null> = ref(null)
+let userData: Ref<UserData | null> = ref(null)
 
 const userTopicsData: Ref<TopicsData[]> = ref([
   { id: 1, topicName: 'Work' },
@@ -13,17 +13,18 @@ const userTopicsData: Ref<TopicsData[]> = ref([
   { id: 3, topicName: 'Personnal' }
 ])
 
-let isActive: Ref<boolean> = ref(false)
+let isActive: Ref<boolean> = ref(true)
 function isLogged() {
   return isActive.value
 }
 
-async function fetchData() {
-  userData.value = await UserService.getUserById(1);
+async function fetchData(): Promise<void> {
+  UserService.getUserById(1).then((response) => {
+    userData.value = response.data
+  })
 }
 
 onMounted(() => {
-  console.log(fetchData())
   fetchData();
 });
 
@@ -62,7 +63,7 @@ function addTopic() { }
               </svg>
             </div>
             <span class="flex flex-wrap content-center ml-3 w-full">
-              <p>{{ $t('app.sidebar.name-account', { name: userData.firstName }) }}</p>
+              <p>{{ $t('app.sidebar.name-account', { name: userData?.firstname }) }}</p>
             </span>
           </div>
           <button type="button" @click="toggle()"

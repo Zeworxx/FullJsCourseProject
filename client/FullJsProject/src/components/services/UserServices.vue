@@ -11,8 +11,12 @@ export class UserServices {
         })
     }
 
-    public getUserById(id: number): Promise<UserData> {
-        return this.axiosInstance.get(`/api/user/get-user-by-id/${id}`)
+    public getUserById(userId: number): Promise<UserData> {
+        return this.axiosInstance.get(`/api/user/get-user-by-id/${userId}`)
+    }
+
+    public addTopic(userId: number): Promise<void> {
+        return this.axiosInstance.post(`/api/todolist/add-topic/${userId}`)
     }
 }
 
