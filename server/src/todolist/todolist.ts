@@ -1,8 +1,9 @@
 
-export interface UserContrat {
+export interface TodolistContrat {
     userId: number,
-    firstname: string,
-    email: string,
-    password?: string,
-    lastname: string
+}
+
+export interface TopicContrat {
+    userId: number,
+    topicName: string
 }

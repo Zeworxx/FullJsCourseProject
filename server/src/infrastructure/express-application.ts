@@ -1,3 +1,5 @@
+import { TodolistJSONService } from "../todolist/todolist-json-service";
+import { TodolistServices } from "../todolist/todolist-service";
 import { UserJSONService } from "../user/user-json-service";
 import { UserService } from "../user/user-service";
 import { DbServices } from "./db-services";
@@ -10,6 +12,7 @@ export class ExpressApplication {
     private port!: string;
     private server!: ExpressServer;
     private userService!: UserService;
+    private todolistService!: TodolistServices
     private dbServices!: DbServices;
 
     constructor() {
@@ -41,10 +44,11 @@ export class ExpressApplication {
 
     private configureServices(): void {
         this.userService = new UserJSONService(this.dbServices);
+        this.todolistService = new TodolistJSONService(this.dbServices)
     }
 
     private configureExpressRouter(): void {
-        this.expressRouter = new ExpressRouter(this.userService);
+        this.expressRouter = new ExpressRouter(this.userService, this.todolistService);
     }
 
     private configureServer(): void {

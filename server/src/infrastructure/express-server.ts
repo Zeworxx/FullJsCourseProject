@@ -1,7 +1,7 @@
 import express from "express";
 import { ExpressRouter } from "./express-router";
 import bodyParser from "body-parser";
-import cors, { CorsOptions } from 'cors';
+import cors from 'cors';
 
 export class ExpressServer {
     private express = express();
