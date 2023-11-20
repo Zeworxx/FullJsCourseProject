@@ -32,7 +32,6 @@ export class UserRouter {
             try {
                 const id = req.params.id;
                 const result = this.userController.getById(id.toString());
-                console.log('f')
                 res.status(200).json(await result);
             } catch (e: unknown) {
                 res.status(404).json(e);

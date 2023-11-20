@@ -6,6 +6,6 @@ export interface UserData {
 }
 
 export interface TopicsData {
-    id: number,
+    userId: number,
     topicName: string
 }

@@ -3,29 +3,35 @@
 import { onMounted, ref, type Ref } from 'vue'
 import { type UserData, type TopicsData } from 'src/models/app.model'
 import { UserServices } from '../services/UserServices.vue';
+import { TodolistServices } from '../services/TodolistServices.vue';
 const UserService = new UserServices()
+const TodolistService = new TodolistServices()
 
 let userData: Ref<UserData | null> = ref(null)
 
-const userTopicsData: Ref<TopicsData[]> = ref([
-  { id: 1, topicName: 'Work' },
-  { id: 2, topicName: 'School' },
-  { id: 3, topicName: 'Personnal' }
-])
+const userTopicsData: Ref<TopicsData[] | null> = ref(null)
 
 let isActive: Ref<boolean> = ref(true)
 function isLogged() {
   return isActive.value
 }
 
-async function fetchData(): Promise<void> {
-  UserService.getUserById(1).then((response) => {
+async function fetchUserData(): Promise<void> {
+  UserService.getUserById(1).then((response: any) => {
     userData.value = response.data
   })
 }
 
+async function fetchTopics(): Promise<void> {
+  TodolistService.getTopics(1).then((response: any) => {
+    console.log(response.data)
+    userTopicsData.value = response.data
+  })
+}
+
 onMounted(() => {
-  fetchData();
+  fetchUserData();
+  fetchTopics();
 });
 
 
@@ -133,8 +139,8 @@ function addTopic() { }
           </svg>
           <h1 class="ml-4">{{ $t('app.sidebar.task-topic-list.add-topic-list') }}</h1>
         </div>
-        <div class="flex px-2 py-2 flex-row mb-3 items-center hover:cursor-pointer rounded hover:bg-slate-200"
-          v-for="userTopic in userTopicsData" :key="userTopic.id">
+        <div class="flex px-2 py-2 flex-row mb-1 items-center hover:cursor-pointer rounded hover:bg-slate-200"
+          v-for="userTopic in userTopicsData" :key="userTopic.userId">
           <div class="w-5 h-5 rounded-xl bg-amber-200"></div>
           <span class="ml-3">{{ userTopic.topicName }}</span>
           <span

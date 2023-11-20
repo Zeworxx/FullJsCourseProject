@@ -19,7 +19,7 @@ export class TodolistRouter {
             }
         })
 
-        this.router.post('/get-topics/:id', async (req, res, next) => {
+        this.router.get('/get-topics/:id', async (req, res, next) => {
             try {
                 const userId = parseInt(req.params.id)
                 const result = this.todolistController.getT(userId)
