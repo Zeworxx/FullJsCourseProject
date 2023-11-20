@@ -9,13 +9,13 @@ export class UserController {
         }
         this.userService.addUser(userData);
     }
-    getById(id: string): UserContrat | null {
+    getById(id: string){
         if (!id) {
             throw new Error('id is missing');
         } else if (typeof id !== 'string') {
             throw new Error('id is not a string');
         }
-        return this.userService.getUserById(id);
+        this.userService.getUserById(id);
     }
 
     deleteById(id: string) {
