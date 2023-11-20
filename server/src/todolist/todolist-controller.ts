@@ -7,6 +7,8 @@ export class TodolistController {
     addT(topic: TopicContrat) {
         if (!topic) {
             throw new Error("Topic doesn't exist !")
+        } else if (isNaN(topic.userId)) {
+            throw new Error('ID is not a number')
         }
         console.log(topic)
         this.todolistServices.addTopic(topic)

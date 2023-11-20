@@ -12,11 +12,10 @@ export class TodolistServices {
     }
 
     public getTopics(userId: number): Promise<TopicsData> {
-        console.log(userId)
         return this.axiosInstance.get(`/api/todolist/get-topics/${userId}`)
     }
 
-    public addTopic(userId: number): Promise<void> {
+    public addTopic(userId: number | undefined): Promise<void> {
         return this.axiosInstance.post(`/api/todolist/add-topic/${userId}`)
     }
 }

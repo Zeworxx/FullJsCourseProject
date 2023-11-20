@@ -17,7 +17,7 @@ export class UserJSONService implements UserService {
         try {
             const sql = `SELECT "user_id", "email", "firstname", "lastname" FROM "user" WHERE "user_id"=$1`;
             const user = (await this.dbService.pg.query(sql, [id])).rows[0];
-            return user;
+            return userFormatValues(user)
         } catch (e) {
             console.error(e);
             throw e;
