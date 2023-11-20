@@ -22,8 +22,8 @@ export class ExpressApplication {
 
     private configureApplication(): void {
         this.configureEnvironment();
-        this.configureServerPort();
         this.configureDb();
+        this.configureServerPort();
         this.configureServices();
         this.configureExpressRouter();
         this.configureServer();
@@ -40,7 +40,7 @@ export class ExpressApplication {
     }
 
     private configureServices(): void {
-        this.userService = new UserJSONService();
+        this.userService = new UserJSONService(this.dbServices);
     }
 
     private configureExpressRouter(): void {
