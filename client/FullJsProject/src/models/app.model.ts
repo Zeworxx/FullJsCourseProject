@@ -6,6 +6,13 @@ export interface UserData {
 }
 
 export interface TopicsData {
-    userId: number,
+    id: number
+    userId: number
     topicName: string
+}
+
+export interface TaskData {
+    name: string
+    description: string,
+
 }

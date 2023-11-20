@@ -1,10 +1,20 @@
 <script setup lang="ts">
 import type { UserData } from '@/models/app.model'
-import { type Ref, ref } from 'vue'
+import { type Ref, ref, onMounted } from 'vue'
+import { TodolistServices } from '../services/TodolistServices.vue';
+import { UserServices } from '../services/UserServices.vue';
+const UserService = new UserServices()
+const userData: Ref<UserData | null> = ref(null)
 
-const userData: Ref<UserData> = ref({
-  firstName: 'Baptiste'
-})
+  function fetchUserData(): void {
+  UserService.getUserById(1).then((response: any) => {
+    userData.value = response.data
+  })
+}
+
+onMounted(() => {
+  fetchUserData();
+});
 </script>
 
 <template>
@@ -13,7 +23,7 @@ const userData: Ref<UserData> = ref({
       <h1 class="flex items-center text-5xl font-extrabold dark:text-white mb-3">
         {{
           $t('app.todolist.welcome-title', {
-            name: userData.firstName
+            name: userData?.firstname
           })
         }}
       </h1>
