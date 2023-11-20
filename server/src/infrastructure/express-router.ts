@@ -2,9 +2,9 @@ import { Router } from "express";
 import { UserService } from "../user/user-service";
 import { UserController } from "../user/user-controller";
 import { UserRouter } from "../user/user-router";
-import { TodolistRouter } from "../todolist/user-router";
-import { TodolistController } from "../todolist/user-controller";
-import { TodolistServices } from "../todolist/user-service";
+import { TodolistRouter } from "../todolist/todolist-router";
+import { TodolistController } from "../todolist/todolist-controller";
+import { TodolistServices } from "../todolist/todolist-service";
 
 export class ExpressRouter {
     router = Router();

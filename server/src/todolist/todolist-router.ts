@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { TodolistController } from './user-controller';
+import { TodolistController } from './todolist-controller';
 
-export class UserRouter {
+export class TodolistRouter {
     router = Router();
     constructor(private todolistController: TodolistController) {
         this.configureRoutes();

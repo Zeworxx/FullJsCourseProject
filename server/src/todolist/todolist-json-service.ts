@@ -1,5 +1,5 @@
 import { DbServices } from '../infrastructure/db-services';
-import { TodolistServices } from './user-service';
+import { TodolistServices } from './todolist-service';
 
 export class TodolistJSONService implements TodolistServices {
     private dbService: DbServices
