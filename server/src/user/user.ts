@@ -1,7 +1,8 @@
 
-export class UserContrat {
-    constructor(public userId: string,
-        private fullName: string,
-        private email: string) {
-    }
+export interface UserContrat {
+    userId: number,
+    firstname: string,
+    email: string,
+    password?: string,
+    lastname: string
 }

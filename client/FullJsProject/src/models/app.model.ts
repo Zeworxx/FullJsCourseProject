@@ -1,9 +1,11 @@
 export interface UserData {
-    firstName : string
-    topicTask : string
+    userId: number
+    firstName: string
+    lastname: string
+    email: string
 }
 
-export interface TopicsData{
-    id : number,
-    topicName : string
+export interface TopicsData {
+    id: number,
+    topicName: string
 }

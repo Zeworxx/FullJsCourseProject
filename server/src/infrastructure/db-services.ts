@@ -16,4 +16,8 @@ export class DbServices {
     private clientConnexion() {
         return JSON.parse(readFileSync('./src/data/db-connect.json', { encoding: 'utf-8' }));
     }
+
+    get pg() {
+        return this.pgClient
+    }
 }

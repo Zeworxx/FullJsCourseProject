@@ -1,19 +1,27 @@
 import { DbServices } from '../infrastructure/db-services';
+import { userFormatValues } from '../utils/user-format';
 import { UserContrat } from './user';
 import { UserService } from './user-service';
 
 export class UserJSONService implements UserService {
-    private dbServices: DbServices;
+    private dbService: DbServices
 
-    constructor(dbServices: DbServices) {
-        this.dbServices = dbServices;
+    constructor(dbService: DbServices) {
+        this.dbService = dbService
     }
 
     addUser(userData: UserContrat): void {
     }
 
-    getUserById(id: string) {
-
+    async getUserById(id: string) {
+        try {
+            const sql = `SELECT "user_id", "email", "firstname", "lastname" FROM "user" WHERE "user_id"=$1`;
+            const user = (await this.dbService.pg.query(sql, [id])).rows[0];
+            return user;
+        } catch (e) {
+            console.error(e);
+            throw e;
+        }
     }
 
     deleteUserById(id: string): void {

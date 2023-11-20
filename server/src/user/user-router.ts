@@ -28,11 +28,12 @@ export class UserRouter {
             }
         });
 
-        this.router.get('/get-user-by-id/:id', (req, res, next) => {
+        this.router.get('/get-user-by-id/:id', async(req, res, next) => {
             try {
                 const id = req.params.id;
                 const result = this.userController.getById(id.toString());
-                res.status(200).json(result);
+                console.log('f')
+                res.status(200).json(await result);
             } catch (e: unknown) {
                 res.status(404).json(e);
                 next(e);
