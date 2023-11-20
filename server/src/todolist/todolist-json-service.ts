@@ -18,4 +18,15 @@ export class TodolistJSONService implements TodolistServices {
             throw e
         }
     }
+
+    async getTopics(userId: number): Promise<TopicContrat[]> {
+        try {
+            const sql = `SELECT * FROM topics WHERE user_id=$1`
+            const topicsList: TopicContrat[] = (await this.dbService.pg.query(sql, [userId])).rows.map(row => { return row });
+            return topicsList
+        } catch (e) {
+            console.error(e)
+            throw e
+        }
+    }
 }

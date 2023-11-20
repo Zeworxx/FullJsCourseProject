@@ -14,6 +14,18 @@ export class TodolistRouter {
                 this.todolistController.addT({ topicName, userId })
                 res.sendStatus(200)
             } catch (e) {
+                res.status(404).json(e);
+                next(e);
+            }
+        })
+
+        this.router.post('/get-topics/:id', async (req, res, next) => {
+            try {
+                const userId = parseInt(req.params.id)
+                const result = this.todolistController.getT(userId)
+                res.status(200).json(await result)
+            } catch (e) {
+                res.status(404).json(e);
                 next(e);
             }
         })

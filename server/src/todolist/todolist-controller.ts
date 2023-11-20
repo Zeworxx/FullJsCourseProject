@@ -11,4 +11,13 @@ export class TodolistController {
         console.log(topic)
         this.todolistServices.addTopic(topic)
     }
+
+    getT(userId: number) {
+        if (!userId) {
+            throw new Error('Missing ID parameter')
+        } else if (isNaN(userId)) {
+            throw new Error('ID is not a number')
+        }
+        return this.todolistServices.getTopics(userId)
+    }
 }
