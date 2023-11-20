@@ -1,5 +1,6 @@
 import { UserJSONService } from "../user/user-json-service";
 import { UserService } from "../user/user-service";
+import { DbServices } from "./db-services";
 import { ExpressRouter } from "./express-router";
 import { ExpressServer } from "./express-server";
 import * as dotenv from 'dotenv'
@@ -9,6 +10,7 @@ export class ExpressApplication {
     private port!: string;
     private server!: ExpressServer;
     private userService!: UserService;
+    private dbServices!: DbServices;
 
     constructor() {
         this.configureApplication();
@@ -21,6 +23,7 @@ export class ExpressApplication {
     private configureApplication(): void {
         this.configureEnvironment();
         this.configureServerPort();
+        this.configureDb();
         this.configureServices();
         this.configureExpressRouter();
         this.configureServer();
@@ -46,6 +49,11 @@ export class ExpressApplication {
 
     private configureServer(): void {
         this.server = new ExpressServer(this.port, this.expressRouter);
+    }
+
+    private configureDb(): void {
+        this.dbServices = new DbServices()
+        this.dbServices.init()
     }
 
     private getPort(): string {

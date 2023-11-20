@@ -1,0 +1,7 @@
+{
+    "user": "todolist",
+    "host": "127.0.0.1",
+    "database": "todolist",
+    "password": "admin",
+    "port": 5432
+}
