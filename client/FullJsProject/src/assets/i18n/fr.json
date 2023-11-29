@@ -1,5 +1,15 @@
 {
     "app" : {
+        "login" : {
+            "title" : "Connexion",
+            "form" : {
+                "email-label" : "Adresse email :",
+                "email-placeholder" : "email@company.com",
+                "password-label" : "Mot de passe :",
+                "password-placeholder" : "Votre mot de passe",
+                "submit-button" : "Se connecter"
+            }
+        },
         "sidebar" : {
             "name-account" : "{name}",
             "logout-button" : "Déconnexion",
