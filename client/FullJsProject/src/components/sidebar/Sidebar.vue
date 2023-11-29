@@ -38,7 +38,7 @@ function toggle() {
   isActive.value = !isActive.value
 }
 
-function addTopic(userId: number | undefined) {
+function addTopic(userId: number | undefined) { 
   TodolistService.addTopic(userId)
   fetchTopics()
 }
@@ -134,11 +134,9 @@ function addTopic(userId: number | undefined) {
         <div class="font-bold text-2xl">
           <h1>{{ $t('app.sidebar.task-topic-list.main-title') }}</h1>
         </div>
-        <div
-          class="flex mt-2 mb-3 px-1 py-1 rounded font-semibold text-lg text-neutral-400 hover:cursor-pointer hover:bg-slate-200"
-          @click="addTopic(userData?.userId)">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#B0B0B0	"
-            class="w-6 h-6 mt-0.5">
+        <div class="flex mt-2 mb-3 px-1 py-1 rounded font-semibold text-lg text-neutral-400 hover:cursor-pointer hover:bg-slate-200" @click="addTopic(userData?.userId)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+            stroke="#B0B0B0	" class="w-6 h-6 mt-0.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
           <h1 class="ml-4">{{ $t('app.sidebar.task-topic-list.add-topic-list') }}</h1>

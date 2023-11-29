@@ -4,7 +4,7 @@
             "title" : "Connexion",
             "form" : {
                 "email-label" : "Adresse email :",
-                "email-placeholder" : "email@company.com",
+                "email-placeholder" : "email@exemple.com",
                 "password-label" : "Mot de passe :",
                 "password-placeholder" : "Votre mot de passe",
                 "submit-button" : "Se connecter"
