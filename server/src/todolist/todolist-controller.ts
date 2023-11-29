@@ -10,7 +10,6 @@ export class TodolistController {
         } else if (isNaN(topic.userId)) {
             throw new Error('ID is not a number')
         }
-        console.log(topic)
         this.todolistServices.addTopic(topic)
     }
 
