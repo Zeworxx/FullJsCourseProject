@@ -7,7 +7,8 @@
                 "email-placeholder" : "Email",
                 "password-label" : "Mot de passe :",
                 "password-placeholder" : "Votre mot de passe",
-                "submit-button" : "Se connecter"
+                "submit-button" : "Se connecter",
+                "error-label" : "Email ou mot de passe incorrect"
             }
         },
         "sidebar" : {

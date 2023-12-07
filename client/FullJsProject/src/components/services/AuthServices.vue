@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { LoginData, TopicsData } from '@/models/app.model';
+import type { LoginData } from '@/models/app.model';
 import router from '@/router';
 import type { AxiosInstance } from 'axios';
-import axios from 'axios'
+import axios from 'axios';
 
 export class AuthServices {
     private axiosInstance!: AxiosInstance
@@ -13,13 +13,18 @@ export class AuthServices {
     }
 
     public async login(log: LoginData): Promise<void> {
-        this.axiosInstance.post(`/api/auth/login`, { email: log.email, password: log.password }).then(response => {
-            const token = response.data
-            localStorage.setItem('token', token);
-            axios.defaults.headers.common['Authorization'] = token;
-            router.push('/')
-        }).catch(error => {
-            console.error('Authentication failed:', error);
+        return new Promise((resolve, reject) => {
+            this.axiosInstance.post(`/api/auth/login`, { email: log.email, password: log.password })
+                .then(response => {
+                    const token = response.data;
+                    localStorage.setItem('token', token);
+                    axios.defaults.headers.common['Authorization'] = token;
+                    router.push('/')
+                    resolve();
+                })
+                .catch(error => {
+                    reject(error);
+                });
         });
     }
 
