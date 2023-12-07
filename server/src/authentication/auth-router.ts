@@ -21,5 +21,13 @@ export class AuthRouter {
                 res.status(500).json(e)
             }
         })
+
+        this.router.post('/logout', async (req, res) => {
+            try {
+                res.status(200).json({ message: 'Logout successful' });
+            } catch (e) {
+                res.status(500).json(e)
+            }
+        })
     }
 }

@@ -22,5 +22,12 @@ export class AuthServices {
             console.error('Authentication failed:', error);
         });
     }
+
+    public async logout(): Promise<void> {
+        this.axiosInstance.post(`/api/auth/logout`).then(response => {
+            localStorage.removeItem('token')
+            router.push('/login')
+        })
+    }
 }
 </script>

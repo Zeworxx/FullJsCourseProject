@@ -4,17 +4,14 @@ import { onMounted, ref, type Ref } from 'vue'
 import { type UserData, type TopicsData } from 'src/models/app.model'
 import { UserServices } from '../services/UserServices.vue';
 import { TodolistServices } from '../services/TodolistServices.vue';
+import { AuthServices } from '../services/AuthServices.vue';
 const UserService = new UserServices()
 const TodolistService = new TodolistServices()
+const authServices = new AuthServices()
 
 let userData: Ref<UserData | null> = ref(null)
 
 const userTopicsData: Ref<TopicsData[] | null> = ref(null)
-
-let isActive: Ref<boolean> = ref(true)
-function isLogged() {
-  return isActive.value
-}
 
 function fetchUserData(): void {
   UserService.getUserById(1).then((response: any) => {
@@ -34,11 +31,11 @@ onMounted(() => {
 });
 
 
-function toggle() {
-  isActive.value = !isActive.value
+function logout() {
+  authServices.logout()
 }
 
-function addTopic(userId: number | undefined) { 
+function addTopic(userId: number | undefined) {
   TodolistService.addTopic(userId)
   fetchTopics()
 }
@@ -59,31 +56,23 @@ function addTopic(userId: number | undefined) {
     class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
     aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-      <div class="mb-5 flex w-full" v-if="isLogged()">
-        <div class="flex flex-col ml-4 w-full">
-          <div class="flex flex-row mb-4">
-            <div
-              class="relative w-14 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 border border-gray-300">
-              <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd">
-                </path>
-              </svg>
-            </div>
-            <span class="flex flex-wrap content-center ml-3 w-full">
-              <p>{{ $t('app.sidebar.name-account', { name: userData?.firstname }) }}</p>
-            </span>
+      <div class="flex flex-col ml-4 w-full">
+        <div class="flex flex-row mb-4">
+          <div
+            class="relative w-14 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 border border-gray-300">
+            <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd">
+              </path>
+            </svg>
           </div>
-          <button type="button" @click="toggle()"
-            class="border border-blue-500 text-blue-500 bg-gray-50 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-1.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            {{ $t('app.sidebar.logout-button') }}
-          </button>
+          <span class="flex flex-wrap content-center ml-3 w-full">
+            <p>{{ $t('app.sidebar.name-account', { name: userData?.firstname }) }}</p>
+          </span>
         </div>
-      </div>
-      <div class="flex justify-center mb-5" v-else>
-        <button type="button" @click="toggle()"
+        <button type="button" @click="logout()"
           class="border border-blue-500 text-blue-500 bg-gray-50 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-1.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          {{ $t('app.sidebar.login-button') }}
+          {{ $t('app.sidebar.logout-button') }}
         </button>
       </div>
       <ul class="space-y-2 font-medium">
@@ -134,9 +123,11 @@ function addTopic(userId: number | undefined) {
         <div class="font-bold text-2xl">
           <h1>{{ $t('app.sidebar.task-topic-list.main-title') }}</h1>
         </div>
-        <div class="flex mt-2 mb-3 px-1 py-1 rounded font-semibold text-lg text-neutral-400 hover:cursor-pointer hover:bg-slate-200" @click="addTopic(userData?.userId)">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-            stroke="#B0B0B0	" class="w-6 h-6 mt-0.5">
+        <div
+          class="flex mt-2 mb-3 px-1 py-1 rounded font-semibold text-lg text-neutral-400 hover:cursor-pointer hover:bg-slate-200"
+          @click="addTopic(userData?.userId)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#B0B0B0	"
+            class="w-6 h-6 mt-0.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
           <h1 class="ml-4">{{ $t('app.sidebar.task-topic-list.add-topic-list') }}</h1>
