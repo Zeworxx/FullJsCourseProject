@@ -4,7 +4,7 @@
   "description": "Tremendous Js Project",
   "main": "index.js",
   "scripts": {
-    "start": "",
+    "start": "npm run dev",
     "dev": "npm-run-all -p server client",
     "client": "cd ./client/FullJsProject && npm run dev",
     "server": "cd ./server && npm start"
