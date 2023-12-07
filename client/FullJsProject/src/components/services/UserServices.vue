@@ -11,7 +11,7 @@ export class UserServices {
         })
     }
 
-    public getUserById(userId: number): Promise<UserData> {
+    public getUserById(userId: number | null): Promise<UserData> {
         return this.axiosInstance.get(`/api/user/get-user-by-id/${userId}`)
     }
 }

@@ -18,7 +18,7 @@ export class AuthJSONService implements AuthService {
 
             if (user && user.password === password) {
                 const token = JWT.sign({ user: user.email }, this.secretKeyJWT, { expiresIn: '1h' });
-                return token
+                return { token: token, userId: user.user_id }
             } else {
                 return null
             }

@@ -11,11 +11,12 @@ const TodolistService = new TodolistServices()
 const authServices = new AuthServices()
 
 let userData: Ref<UserData | null> = ref(null)
+const userId = authServices.getUserId()
 
 const userTopicsData: Ref<TopicsData[] | null> = ref(null)
 
 function fetchUserData(): void {
-  UserService.getUserById(1).then((response: any) => {
+  UserService.getUserById(userId).then((response: any) => {
     userData.value = response.data
   })
 }
@@ -72,7 +73,7 @@ function addTopic(userId: number | undefined) {
           </span>
         </div>
         <button type="button" @click="logout()"
-          class="border border-blue-500 text-blue-500 bg-gray-50 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-1.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          class="border border-blue-500 text-blue-500 bg-gray-50 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-1.5 text-center mr-4 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           {{ $t('app.sidebar.logout-button') }}
         </button>
       </div>
