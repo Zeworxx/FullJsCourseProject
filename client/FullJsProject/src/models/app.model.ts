@@ -13,6 +13,10 @@ export interface TopicsData {
 
 export interface TaskData {
     name: string
-    description: string,
+    description: string
+}
 
+export interface LoginData {
+    email: string
+    password: string
 }

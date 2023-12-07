@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { UserController } from './user-controller';
+import { verifyToken } from '../utils/midleware';
 
 export class UserRouter {
     router = Router();
@@ -28,7 +29,7 @@ export class UserRouter {
             }
         });
 
-        this.router.get('/get-user-by-id/:id', async(req, res, next) => {
+        this.router.get('/get-user-by-id/:id', verifyToken, async (req, res, next) => {
             try {
                 const id = req.params.id;
                 const result = this.userController.getById(id.toString());

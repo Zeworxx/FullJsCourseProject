@@ -3,13 +3,13 @@ import type { TopicsData } from '@/models/app.model'
 import { onMounted, ref, type Ref } from 'vue'
 import { TodolistServices } from '../services/TodolistServices.vue';
 
-const TodolistService = new TodolistServices()
+const todolistService = new TodolistServices()
 
 // Change it with API endpoint
 const topicsList: Ref<TopicsData[] | null> = ref(null)
 
 function fetchTopics(): void {
-  TodolistService.getTopics(1).then((response: any) => {
+  todolistService.getTopics(1).then((response: any) => {
     topicsList.value = response.data
   })
 }

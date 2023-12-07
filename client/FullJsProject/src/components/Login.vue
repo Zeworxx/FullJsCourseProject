@@ -30,12 +30,6 @@ function submitForm() {
       <div class="w-[450px] flex-shrink-0">
         <img class="md:flex hidden h-[500px]" src="../assets/images/Checklist.jpg" alt="" />
       </div>
-      <div class="flex items-center w-full">
-        <img class="md:hidden w-full flex" src="../assets/mobil.svg" alt="" loading="lazy" />
-      </div>
-    </div>
-    <div v-else>
-      <Success />
     </div>
   </div>
 </template>
