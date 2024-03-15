@@ -10,7 +10,7 @@ export class ExpressServer {
         this.configureRoutes()
     }
     bootstrap(): void {
-        this.express.listen(this.port, () => {
+        this.express.listen(3000, () => {
             console.log(`Listening on port ${this.port}`)
         })
     }

@@ -8,7 +8,8 @@ export class AuthJSONService implements AuthService {
 
     constructor(dbService: DbServices) {
         this.dbService = dbService
-        this.secretKeyJWT = process.env.JWT_SECRET
+        this.secretKeyJWT = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTcxMDUxMjcxNywiaWF0IjoxNzEwNTEyNzE3fQ.iuj0QezXM-bwxiR5ExXMGr61oetrufzNTZTqJN9lEWM"
+        console.log(this.secretKeyJWT)
     }
 
     async getLogin(email: string, password: string): Promise<any> {

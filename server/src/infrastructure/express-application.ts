@@ -29,7 +29,7 @@ export class ExpressApplication {
     private configureApplication(): void {
         this.configureEnvironment();
         this.configureDb();
-        this.configureServerPort();
+        // this.configureServerPort();
         this.configureServices();
         this.configureExpressRouter();
         this.configureServer();
@@ -41,9 +41,9 @@ export class ExpressApplication {
         });
     }
 
-    private configureServerPort(): void {
-        this.port = this.getPort();
-    }
+    // private configureServerPort(): void {
+    //     this.port = this.getPort();
+    // }
 
     private configureServices(): void {
         this.userService = new UserJSONService(this.dbServices);
@@ -64,12 +64,12 @@ export class ExpressApplication {
         this.dbServices.init()
     }
 
-    private getPort(): string {
-        const port = process.env.PORT;
-        if (!port) {
-            throw new Error('No port was found in env file.');
-        }
+    // private getPort(): string {
+    //     const port = process.env.PORT;
+    //     if (!port) {
+    //         throw new Error('No port was found in env file.');
+    //     }
 
-        return port;
-    }
+    //     return port;
+    // }
 }
